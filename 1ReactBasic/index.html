@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Basic</title>
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel CDN -->
+    <!-- 
+        Babel is used to compile JSX code into JavaScript that browsers can understand 
+        Browswer က jsx ကို နားမလည်လို့ babel က compile လုပ်ပေးပြီး browser က နားလည်တဲ့ js code ကို ပြန်ပေးပါတယ်
+     -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1>React Basic</h1>
+    <p>Hello World</p>
+    <div id="main"></div>
+</body>
+
+<script type="text/babel">
+    // Browser မှာ Babel နဲ့ Compile လုပ်ချင်တဲ့အတွက်ကြောင့် type="text/babel" လို့ရေးပေးရတယ်။ အဲ့တာအရေးကြီးပါတယ်။
+    // React Component ကို စတင်ဖန်တီးခြင်း။ အပေါ်မှာ id="main" ဆိုတဲ့ div ကို Control လုပ်မယ့် Component ဖြစ်ပါတယ်။
+    const Main = () => {
+        // react component မှာ return statement က အရေးကြီးပါတယ်။ ဘာကို ပြန်ပေးမလဲဆိုရင် html template ကို ပြန်ပေးရပါတယ်။ 
+        // အဲ့ template ကို JSX လို့ခေါ်ပါတယ်။ JSX က JavaScript XML လို့ခေါ်တဲ့ syntax extension တစ်ခုဖြစ်ပြီး React component တွေကို ရေးသားဖန်တီးရာမှာ အသုံးပြုပါတယ်။
+        // jsx မှာက HTML လို class မဟုတ်ပဲ className ဖြစ်သွားတယ်
+        // jsx code တွေထဲမှာ single root element တစ်ခုပဲ ပါတယ်
+        return (
+            <div className="test-class">
+                Hello world, this is main tag for main div.
+                <span>Hi there!</span>
+            </div>
+        )
+    }
+
+    let rootContainer = document.getElementById('main');
+    // create react element
+    let e = React.createElement;
+
+    // create react root element
+    let root = ReactDOM.createRoot(rootContainer);
+
+    // render the react root
+    root.render(e(Main));
+</script>
+
+</html>
