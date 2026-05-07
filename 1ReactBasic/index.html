@@ -28,10 +28,30 @@
         // အဲ့ template ကို JSX လို့ခေါ်ပါတယ်။ JSX က JavaScript XML လို့ခေါ်တဲ့ syntax extension တစ်ခုဖြစ်ပြီး React component တွေကို ရေးသားဖန်တီးရာမှာ အသုံးပြုပါတယ်။
         // jsx မှာက HTML လို class မဟုတ်ပဲ className ဖြစ်သွားတယ်
         // jsx code တွေထဲမှာ single root element တစ်ခုပဲ ပါတယ်
+
+        let name = "Thet Zaw Hein";
+        let number = 20; // ဒီနေရာမှာ number ဆိုတာ Number Datatype ဖြစ်တယ် 
+        // browser မှာ render လုပ်ပြီးရင်တော့ number က String datatype ဖြစ်သွားတယ်
+
+        // class တစ်ခုကို Condition တစ်ခုပေါ်မှာ မူတည်ပြီး ရေးချင်တယ်ဆိုရင်
+        let className = "my-class-name";
+        // return ထဲမှာ className ဆိုတဲ့ data က အပေါ်က တန်ဖိုးကိုလိုက်ပြီး Dynamic ပြောင်းလဲသွားမှာဖြစ်ပါတယ် အောက်က div ထဲမှာတော့ "" မဟုတ်ပဲ Template Extraction {} နဲ့ရေးပေးရတာကို သတိထားပါ
+
+        let clickHandler = (e) => {
+            // alert('Hello World');
+            console.log(e);
+        }
+
         return (
-            <div className="test-class">
-                Hello world, this is main tag for main div.
-                <span>Hi there!</span>
+            <div className={className}>
+                <h1>Hello, {name}!</h1>
+                <h1>Hello, {name.toUpperCase()}!</h1>
+                <p>{number}</p>
+                <p>{new Date().toDateString()}</p>
+                <button onClick={clickHandler}>Click Me!</button>
+                {/* Event တွေအကြောင်းသွားပါမယ် : Click Event */}
+                {/* အပေါ်က {} ထဲက clickHandler မှာ () ကွင်းမပါတာဟာ Function Reference လို့ခေါ်ပါတယ် 
+                () ကွင်းထည့်လိုက်ရင်တော့ click နှိပ်မှ Function အလုပ်လုပ်တာမျိုးမဟုတ်ပဲ Reload လုပ်တိုင်း အလုပ်လုပ်နေမှာဖြစ်ပါတယ် */}
             </div>
         )
     }
@@ -43,7 +63,7 @@
     // create react root element
     let root = ReactDOM.createRoot(rootContainer);
 
-    // render the react root
+    // render the react root - Browswer ပေါ်မှာ render လုပ်ခြင်း
     root.render(e(Main));
 </script>
 
