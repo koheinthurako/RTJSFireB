@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-color: grey;
+  color: white;
+}
+
+/* index.css မှာ ရေးထားတဲ့ css ကို Override လုပ်ခြင်း */
+body {
+  background-color: red;
 }
 
 .App-logo {
