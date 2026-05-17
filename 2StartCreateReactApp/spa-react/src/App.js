@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Image from './assets/Onepiece.jpg';
 import { useState } from 'react';
+import Counter from './Counter';
 
 function App() {
 
@@ -17,13 +18,34 @@ function App() {
     // name = 'Aung Aung'
     setName("Aung Aung");
     console.log(name); 
-    // ဒီမှာတော့ name ကို console.log ထုတ်လိုက်တာနဲ့ Thet Zaw Hein လို့ထုတ်လာမှာဖြစ်ပါတယ်။ 
+    // ဒီမှာတော့ name ကို console.log ထုတ်လိုက်တာနဲ့ Thet Zaw Hein လို့ထုတ်လာမှာဖြစ်ပါတယ်။
     // ဘာလို့လဲဆိုတော့ useState က asynchronous ဖြစ်တယ်ဆိုတဲ့အကြောင်းနဲ့ပတ်သက်ပါတယ်။ 
     // asynchronous ဆိုတာက တစ်ခါတည်းလုပ်မယ့်အရာတွေကို အချိန်အနည်းငယ်ကြာပြီးမှလုပ်တယ်ဆိုတဲ့အဓိပ္ပာယ်ဖြစ်ပါတယ်။ 
     // ဒါကြောင့် setName("Aung Aung") လုပ်လိုက်တာနဲ့ name ကို console.log ထုတ်လိုက်တာနဲ့ Thet Zaw Hein လို့ထုတ်လာမှာဖြစ်ပါတယ်။ 
-    // ဒါကိုပြင်ဖို့အတွက်တော့ useEffect ဆိုတဲ့ Hook ကိုသုံးရမှာဖြစ်ပါတယ်။ 
+    // ဒါကိုပြင်ဖို့အတွက်တော့ useEffect ဆိုတဲ့ Hook ကိုသုံးရမှာဖြစ်ပါတယ်။
     // useEffect က Function Component တွေမှာ Side Effect တွေကိုလုပ်နိုင်အောင်လုပ်ပေးတဲ့ Hook တစ်ခုဖြစ်ပါတယ်။
   }
+
+  let [posts, setPosts] = useState([
+
+  {
+    id: 1,
+    title: "First Post",
+    content: "This is the content of the first post."
+  },
+  {
+    id: 2,
+    title: "Second Post",
+    content: "This is the content of the second post."
+  },
+  {
+    id: 3,
+    title: "Third Post",
+    content: "This is the content of the third post."
+  },
+  ]);
+
+  console.log(posts);
 
   return (
     <div>
@@ -46,6 +68,22 @@ function App() {
           Hook ဆိုတာက Function Component တွေမှာ State နဲ့ Lifecycle Methods တွေကို အသုံးပြုနိုင်အောင် လုပ်ပေးတဲ့ Function တွေပါ။
       */}
       <button onClick={changeName}>Change Your Name</button>
+
+      <h1>Posts</h1>
+      {/* Posts Data တွေကို Loop ပတ်ပြီး ထွက်လာစေချင်တယ်ဆိုရင် Map Loop ကို အသုံးများတယ် */}
+      <ul>
+        {posts.map(post => (
+          // react က loop ပတ်ရင် Key ကိုလိုအပ်တယ်ဆိုတဲ့ error တစ်ခုကို ပြသနာဖြစ်စေတယ်။
+          // အဲ့ဒီ Key ပေါ်မူတည်ပြီးတော့ ပြောင်းဖို့လိုအပ်တဲ့ အောက်က li ကိုပဲ ပြောင်းပေးသွားတယ်။
+          <li key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.content}</p>
+          </li>
+        ))}
+      </ul>
+
+      <Counter />
+      
     </div>
   );
 }
