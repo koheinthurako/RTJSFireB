@@ -47,6 +47,14 @@ function App() {
 
   console.log(posts);
 
+  let deletePost = (id) => {
+    console.log("Delete Post" + id);
+    // filter method က condition false ဖြစ်တဲ့ item တွေကို filter ထုတ်ပစ်ပြီး true ဖြစ်တဲ့ data တွေကို return ပြန်ပေးတယ်။
+    // အဲ့ဒီမှာတော့ post.id !== id ဆိုတဲ့ condition ကို false ဖြစ်တဲ့ post ကို filter ထုတ်ပစ်ပြီး မူလ Array ထဲမှာ ရှိတဲ့ Object ကို ပျက်သွားစေတယ်။
+    // !== လို့ရေးထားပေမယ့် id အချင်းချင်းက တူနေတာကို အတင်း ! (not) လုပ်ထားတာဖြစ်လို့ Condition က False ဖြစ်သွားတယ်။
+    setPosts((prevState) => prevState.filter(post => post.id !== id));
+  }
+
   return (
     <div>
       <h1>Hello {name}</h1>
@@ -75,15 +83,22 @@ function App() {
         {posts.map(post => (
           // react က loop ပတ်ရင် Key ကိုလိုအပ်တယ်ဆိုတဲ့ error တစ်ခုကို ပြသနာဖြစ်စေတယ်။
           // အဲ့ဒီ Key ပေါ်မူတည်ပြီးတော့ ပြောင်းဖို့လိုအပ်တဲ့ အောက်က li ကိုပဲ ပြောင်းပေးသွားတယ်။
+          // JSX Code တွေထဲမှာ Return ပြန်တိုင်း Parent Root Element တစ်ခုထဲမှာ ရှိဖို့လိုအပ်တယ်။
           <li key={post.id}>
             <h2>{post.title}</h2>
             <p>{post.content}</p>
+            {/* Delete Post မှာ () သွားထည့်တယ်ဆိုရင်တော့ သူက Browser Reload လုပ်တိုင်း အမြဲတမ်း Run နေလိမ့်မယ်
+            ဒါပေမယ့် () => Function Reference အနေနဲ့ဆိုရင်တော့ သူက Button ကို နှိပ်လိုက်တဲ့အခါမှာပဲ Run မယ်။ သူ့ကို ရေးတဲ့ပုံစံကအောက်က onClick Event
+            အထဲက () => deletePost(post.id) ဆိုတဲ့ပုံစံပဲဖြစ်ပါတယ်။ ခေါ်သုံးမယ့် Function ထဲကို Parameter Parse လုပ်ဖို့လိုအပ်လာပြီဆိုရင်တော့
+            Function Reference အနေနဲ့ () => FunctionName(Parameter) ဆိုတဲ့ပုံစံကိုသုံးရမှာဖြစ်ပါတယ်။
+            */}
+            <button onClick={() => deletePost(post.id)}>Delete</button>
           </li>
         ))}
       </ul>
 
       <Counter />
-      
+
     </div>
   );
 }
