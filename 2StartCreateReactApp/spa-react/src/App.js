@@ -49,7 +49,7 @@ function App() {
 
   let deletePost = (id) => {
     console.log("Delete Post" + id);
-    // filter method က condition false ဖြစ်တဲ့ item တွေကို filter ထုတ်ပစ်ပြီး true ဖြစ်တဲ့ data တွေကို return ပြန်ပေးတယ်။
+    // filter method က condition false ဖြစ်တဲ့ item တွေကို filter ထုတ်ပစ်ပြီး true ဖြစ်တဲ့ data တွေကို array အနေနဲ့ return ပြန်ပေးတယ်။
     // အဲ့ဒီမှာတော့ post.id !== id ဆိုတဲ့ condition ကို false ဖြစ်တဲ့ post ကို filter ထုတ်ပစ်ပြီး မူလ Array ထဲမှာ ရှိတဲ့ Object ကို ပျက်သွားစေတယ်။
     // !== လို့ရေးထားပေမယ့် id အချင်းချင်းက တူနေတာကို အတင်း ! (not) လုပ်ထားတာဖြစ်လို့ Condition က False ဖြစ်သွားတယ်။
     setPosts((prevState) => prevState.filter(post => post.id !== id));
