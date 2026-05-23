@@ -3,6 +3,8 @@ import './App.css';
 import Image from './assets/Onepiece.jpg';
 import { useState } from 'react';
 import Counter from './Counter';
+import Navbar from './components/Navbar/index';
+import PostsList from './components/PostsList/index';
 
 function App() {
 
@@ -56,7 +58,7 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <h1>Hello {name}</h1>
       {/* Browser ထဲတွင် Photo များထည့်နည်း */}
 
@@ -106,7 +108,26 @@ function App() {
 
       <Counter />
 
-    </div>
+        {/* Props အကြောင်းစမယ်
+          Props ဆိုတာက Parent Component ကနေ Child Component ကို Data တွေကို ပေးပို့တဲ့ နည်းလမ်းတစ်ခုဖြစ်ပါတယ်။ 
+          ဒါကို Component Tree ပုံစံနဲ့တွဲသုံးပြီး Parent Component ကနေ Child Component ကို Data တွေကို ပေးပို့တဲ့ နည်းလမ်းတစ်ခုဖြစ်ပါတယ်။
+        */}
+
+        <Navbar /> 
+        {/* Component ထဲက Navbar Folder ထဲက index.js ထဲကို သွားကြည့်ပါ */}
+
+        <PostsList posts={posts} />
+         {/* Component ထဲက PostsList Folder ထဲက index.js ထဲကို သွားကြည့်ပါ
+            ဒီ App ထဲမှာ ရှိနေတဲ့ Posts Data တွေကို PostsList Component ထဲကို ပေးပို့ချင်တယ်ဆိုရင်တော့ Props ကိုသုံးရမှာဖြစ်ပါတယ်။
+            အဲ့တော့ အပေါ်မှာ ရေးထားတဲ့အတိုင်း PostsList ဘေးမှာ posts ဆိုတဲ့ props ကနေ posts ရဲ့ data တွေကို ပို့ပေးလိုက်တာဖြစ်ပါတယ်။
+            အဲ့ Data Props တွေကို လက်ခံမယ့် ပုံစံကိုတော့ PostsList Component ထဲက index.js ထဲကို သွားကြည့်ပါ
+            အဲ့ထဲမှာပါတဲ့ function ရဲ့ parameter ထဲက props ကို Destructuring နည်းနဲ့ လက်ခံလို့ရပါတယ်။
+            Destructuring နည်းနဲ့မို့လို့ ဒီထဲက props နာမည်နဲ့ တစ်ဖက် Function ထဲက Parameter ထဲက နာမည်တူမှရမယ်။
+         */}
+
+    </>
+    // ဒီ <></>, </> ဆိုတဲ့အရာကို Fragment လို့ခေါ်ပါတယ်။
+    // Fragment က JSX Code တွေထဲမှာ Return ပြန်တိုင်း Parent Root Element တစ်ခုထဲမှာ ရှိဖို့လိုအပ်တယ်ဆိုတဲ့ Rule ကို ကျော်လွှားနိုင်အောင်လုပ်ပေးတဲ့ Component တစ်ခုဖြစ်ပါတယ်။
   );
 }
 

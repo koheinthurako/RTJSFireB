@@ -1,0 +1,20 @@
+nav {
+  background-color: #5085ce;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container ul {
+  display: flex;
+}
+
+.container li {
+  list-style-type: none;
+  margin: 0 20px;
+}
