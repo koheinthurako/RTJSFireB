@@ -80,7 +80,13 @@ function App() {
       <h1>Posts</h1>
       {/* Posts Data တွေကို Loop ပတ်ပြီး ထွက်လာစေချင်တယ်ဆိုရင် Map Loop ကို အသုံးများတယ် */}
       <ul>
-        {posts.map(post => (
+        {/* ဒီတစ်ခါမှာ Post တွေအကုန်လုံး ဖျက်ချလိုက်ပြီးတော့ Post တွေမရှိတော့ဘူးဆိုရင် Conditioal Rendering လုပ်နည်းကိုပြသွားမှာပါ။
+        လုပ်ချင်တယ်ဆိုရင်တော့ && Operator ကိုသုံးရမှာဖြစ်ပါတယ်။ ဒါက javascript ရဲ့ Trick လေးတစ်ခုပါ။ */}
+        {!!posts.length && posts.map(post => (
+          // အပေါ်ကလို !! ဆိုပြီး ၂ ခါရေးထားရင် သူ့ရဲ့ မူလတန်ဖိုးကို Boolean Type အနေနဲ့ ပြောင်းပေးတာဖြစ်ပါတယ်။
+          // ဒီမှာ မူလတန်ဖိုးက 0 ဖြစ်တဲ့ posts.length ကို Boolean Type အနေနဲ့ ပြောင်းပေးလိုက်တာနဲ့ false ဖြစ်သွားတယ်။ 
+          // ဒါကြောင့် && Operator ရဲ့ Left Hand Side က false ဖြစ်သွားတာနဲ့ Right Hand Side ကနေ map loop ကို Run မလုပ်တော့ဘူး။
+          
           // react က loop ပတ်ရင် Key ကိုလိုအပ်တယ်ဆိုတဲ့ error တစ်ခုကို ပြသနာဖြစ်စေတယ်။
           // အဲ့ဒီ Key ပေါ်မူတည်ပြီးတော့ ပြောင်းဖို့လိုအပ်တဲ့ အောက်က li ကိုပဲ ပြောင်းပေးသွားတယ်။
           // JSX Code တွေထဲမှာ Return ပြန်တိုင်း Parent Root Element တစ်ခုထဲမှာ ရှိဖို့လိုအပ်တယ်။
@@ -89,12 +95,13 @@ function App() {
             <p>{post.content}</p>
             {/* Delete Post မှာ () သွားထည့်တယ်ဆိုရင်တော့ သူက Browser Reload လုပ်တိုင်း အမြဲတမ်း Run နေလိမ့်မယ်
             ဒါပေမယ့် () => Function Reference အနေနဲ့ဆိုရင်တော့ သူက Button ကို နှိပ်လိုက်တဲ့အခါမှာပဲ Run မယ်။ သူ့ကို ရေးတဲ့ပုံစံကအောက်က onClick Event
-            အထဲက () => deletePost(post.id) ဆိုတဲ့ပုံစံပဲဖြစ်ပါတယ်။ ခေါ်သုံးမယ့် Function ထဲကို Parameter Parse လုပ်ဖို့လိုအပ်လာပြီဆိုရင်တော့
+            အထဲက {() => deletePost(post.id)} ဆိုတဲ့ပုံစံပဲဖြစ်ပါတယ်။ ခေါ်သုံးမယ့် Function ထဲကို Parameter Parse လုပ်ဖို့လိုအပ်လာပြီဆိုရင်တော့
             Function Reference အနေနဲ့ () => FunctionName(Parameter) ဆိုတဲ့ပုံစံကိုသုံးရမှာဖြစ်ပါတယ်။
             */}
             <button onClick={() => deletePost(post.id)}>Delete</button>
           </li>
         ))}
+        {!posts.length && <p>No Posts Available</p>}
       </ul>
 
       <Counter />
