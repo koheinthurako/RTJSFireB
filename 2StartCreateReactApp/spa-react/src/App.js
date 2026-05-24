@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Counter from './Counter';
 import Navbar from './components/Navbar/index';
 import PostsList from './components/PostsList/index';
+import Modal from './components/Modal/index';
 
 function App() {
 
@@ -44,6 +45,11 @@ function App() {
     id: 3,
     title: "Third Post",
     content: "This is the content of the third post."
+  },
+  {
+    id: 4,
+    title: "Fourth Post",
+    content: "This is the content of the fourth post."
   },
   ]);
 
@@ -124,6 +130,21 @@ function App() {
             အဲ့ထဲမှာပါတဲ့ function ရဲ့ parameter ထဲက props ကို Destructuring နည်းနဲ့ လက်ခံလို့ရပါတယ်။
             Destructuring နည်းနဲ့မို့လို့ ဒီထဲက props နာမည်နဲ့ တစ်ဖက် Function ထဲက Parameter ထဲက နာမည်တူမှရမယ်။
          */}
+
+         {/* <Modal>
+          <h3>Zoom Class is available now.</h3>
+          <p>Feel free to ask here.</p>
+          <p>Thank you</p>
+         </Modal> */}
+
+         <Modal>
+          <h1>Terms and Conditions</h1>
+          <p>Please read our terms and conditions carefully before using our services.</p>
+         </Modal>
+
+         {/* ဒါဆိုရင်တော့ အပေါ်က Modal ဆိုတဲ့ Component မှာ ကိုယ့်စိတ်ကြိုက် Design တွေကို ရေးပြီးတော့ ထို Design များကို index.js ထဲမှာ Children ဆိုတဲ့
+        React Default Props ကနေတစ်ဆင့် ပို့ပေးလိုက်ပြီး Rendering လုပ်တာပဲဖြစ်ပါတယ်။ သူက Component ရဲ့ <> အဖွင့်အပိတ်ကြားထဲမှာ ရေးထားတဲ့ Content တွေကို
+        သယ်ဆောင်လာပြီးတော့ Children ဆိုတဲ့ Props ကို ခေါ်သုံးထားတဲ့နေရာတွေမှာ Auto Inject လုပ်ပေးသွားတာပဲဖြစ်ပါတယ်။ */}
 
     </>
     // ဒီ <></>, </> ဆိုတဲ့အရာကို Fragment လို့ခေါ်ပါတယ်။
