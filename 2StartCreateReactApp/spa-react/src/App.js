@@ -123,6 +123,7 @@ function App() {
 
         <Navbar setShowModal={setShowModal} /> 
         {/* Component ထဲက Navbar Folder ထဲက index.js ထဲကို သွားကြည့်ပါ */}
+        {/* Navbar ထဲသို့ Function ကို Prop အနေနဲ့ ပေးလိုက်ခြင်း */}
 
         <PostsList posts={posts} />
          {/* Component ထဲက PostsList Folder ထဲက index.js ထဲကို သွားကြည့်ပါ
