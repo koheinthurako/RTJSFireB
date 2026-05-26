@@ -9,6 +9,8 @@ import Modal from './components/Modal/index';
 
 function App() {
 
+  let [showModal, setShowModal] = useState(false);
+
   // let name = "Thet Zaw Hein";
   useState("Thet Zaw Hein"); 
   // useState ဆိုတာ Function တစ်ခုပဲ Function ဆိုရင် return တစ်ခုခုပြန်ပေးတယ်
@@ -119,7 +121,7 @@ function App() {
           ဒါကို Component Tree ပုံစံနဲ့တွဲသုံးပြီး Parent Component ကနေ Child Component ကို Data တွေကို ပေးပို့တဲ့ နည်းလမ်းတစ်ခုဖြစ်ပါတယ်။
         */}
 
-        <Navbar /> 
+        <Navbar setShowModal={setShowModal} /> 
         {/* Component ထဲက Navbar Folder ထဲက index.js ထဲကို သွားကြည့်ပါ */}
 
         <PostsList posts={posts} />
@@ -137,10 +139,13 @@ function App() {
           <p>Thank you</p>
          </Modal> */}
 
-         <Modal>
-          <h1>Terms and Conditions</h1>
-          <p>Please read our terms and conditions carefully before using our services.</p>
-         </Modal>
+         {showModal && (
+           <Modal>
+             <h1>Terms and Conditions</h1>
+             <p>Please read our terms and conditions carefully before using our services.</p>
+             <button onClick={() => setShowModal(false)}>Close</button>
+           </Modal>
+         )}
 
          {/* ဒါဆိုရင်တော့ အပေါ်က Modal ဆိုတဲ့ Component မှာ ကိုယ့်စိတ်ကြိုက် Design တွေကို ရေးပြီးတော့ ထို Design များကို index.js ထဲမှာ Children ဆိုတဲ့
         React Default Props ကနေတစ်ဆင့် ပို့ပေးလိုက်ပြီး Rendering လုပ်တာပဲဖြစ်ပါတယ်။ သူက Component ရဲ့ <> အဖွင့်အပိတ်ကြားထဲမှာ ရေးထားတဲ့ Content တွေကို
